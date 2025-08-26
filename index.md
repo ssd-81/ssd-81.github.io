@@ -29,8 +29,9 @@ title: Home
 ---
 
 ## ⭐ Recommendations
-- Tool/Book/Resource #1  
-- Tool/Book/Resource #2  
+- Fullmetal Alchemist Brotherhood (anime)
+    - the perfect story
+- Black Box Thinking , Matthew Syed (book)
 
 ---
 
