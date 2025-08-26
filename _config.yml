@@ -1,7 +1,11 @@
 title: My Blog
 description: A simple blog powered by GitHub Pages and Markdown
 author: Your Name
-theme: jekyll-theme-hacker
 
-# Optional: remove "Download" link
+# Use GitHub Pages' Minimal theme
+plugins:
+  - jekyll-remote-theme
+remote_theme: pages-themes/minimal@v0.2.0
+
+# Optional: remove GitHub "Download" link
 show_downloads: false

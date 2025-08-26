@@ -3,16 +3,38 @@ layout: default
 title: Home
 ---
 
-# Welcome to My Blog
+# {{ site.title }}
+{{ site.description }}
 
-This blog is powered by GitHub Pages and Markdown using Jekyll.
+---
 
-## Recent Posts
-
+## ✍️ Writing (Latest 10)
 <ul>
-  {% for post in site.posts %}
+  {% for post in site.posts limit:10 %}
     <li>
-      <a href="{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %d, %Y" }}
+      <a href="{{ post.url }}">{{ post.title }}</a>
+      <small>({{ post.date | date: "%b %d, %Y" }})</small>
     </li>
   {% endfor %}
 </ul>
+
+<p><a href="/writing.html">➡️ View All Writing</a></p>
+
+---
+
+## 💻 Projects
+- [Project One](#) — Short description  
+- [Project Two](#) — Another project description  
+
+---
+
+## ⭐ Recommendations
+- Tool/Book/Resource #1  
+- Tool/Book/Resource #2  
+
+---
+
+## 📚 Reading / Watchlist
+- Book: *The Pragmatic Programmer*  
+- Article: [Some Blog Post](#)  
+- Video: [Great Talk on Go](#)  

@@ -3,8 +3,6 @@ layout: default
 title: About
 ---
 
-# About Me
+# About
 
-Hi, I’m [Your Name].
-
-This is my personal blog where I write about whatever interests me.
+This is my personal site. I write, build projects, and share recommendations.
