@@ -5,6 +5,10 @@ title: Home
 
 # Welcome to My Blog
 
+This blog is powered by GitHub Pages and Markdown using Jekyll.
+
+## Recent Posts
+
 <ul>
   {% for post in site.posts %}
     <li>

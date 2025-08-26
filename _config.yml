@@ -1,4 +1,7 @@
 title: My Blog
-description: A simple blog using GitHub Pages and Markdown
-author: Sagar Singh
+description: A simple blog powered by GitHub Pages and Markdown
+author: Your Name
 theme: jekyll-theme-minimal
+
+# Optional: remove "Download" link
+show_downloads: false
