@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-bg-light text-text-light font-serif antialiased;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  html.dark {
+    @apply bg-bg-dark text-text-dark;
+  }
+
+  body {
+    @apply min-h-screen;
+  }
+
+  ::selection {
+    @apply bg-text-light text-bg-light;
+  }
+
+  html.dark ::selection {
+    @apply bg-text-dark text-bg-dark;
+  }
+
+  a {
+    @apply underline decoration-1 underline-offset-2 transition-colors duration-200;
+  }
+
+  a:hover {
+    @apply decoration-2;
+  }
+
+  html.dark a {
+    @apply text-text-dark;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-semibold tracking-tight mt-12 mb-4;
+  }
+
+  h1 {
+    @apply text-3xl sm:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl sm:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  p {
+    @apply mb-6;
+  }
+
+  ul, ol {
+    @apply mb-6 pl-6;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  li {
+    @apply mb-2;
+  }
+
+  blockquote {
+    @apply border-l-2 border-muted-light dark:border-muted-dark pl-4 italic my-6;
+  }
+
+  code {
+    @apply font-mono text-sm bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded;
+  }
+
+  pre {
+    @apply overflow-x-auto rounded-lg p-4 my-6 text-sm;
+  }
+
+  html.dark pre {
+    @apply bg-gray-900;
+  }
+
+  hr {
+    @apply my-12 border-gray-200 dark:border-gray-800;
+  }
+}
