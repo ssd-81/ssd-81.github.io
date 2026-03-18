@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+const allPosts: CollectionEntry<'posts'>[] = await getCollection('posts');
+const sortedPosts = allPosts
+  .filter((post: CollectionEntry<'posts'>) => !post.data.draft)
+  .sort((a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const latestPosts = sortedPosts.slice(0, 10);
+---
+
+<BaseLayout title="parallex">
+  <section class="mb-16">
+    <p class="text-xl leading-relaxed mb-8">
+      seeking patterns and mostly fooled by randomness
+    </p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-sans font-semibold text-lg mb-6 text-muted-light dark:text-muted-dark">Writing</h2>
+    <ul class="space-y-4">
+      {latestPosts.map((post) => (
+        <li>
+          <a href={`/posts/${post.slug}`} class="block no-underline group">
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="font-medium group-hover:underline underline-offset-2">{post.data.title}</span>
+              <time datetime={post.data.date.toISOString()} class="text-sm text-muted-light dark:text-muted-dark font-sans whitespace-nowrap">
+                {post.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+              </time>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+    {sortedPosts.length > 10 && (
+      <a href="/writing" class="inline-block mt-6 text-sm font-sans text-muted-light dark:text-muted-dark no-underline hover:text-text-light dark:hover:text-text-dark transition-colors">
+        View all writing →
+      </a>
+    )}
+  </section>
+</BaseLayout>
