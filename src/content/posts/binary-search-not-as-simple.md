@@ -9,6 +9,7 @@ I have recently been focusing on problem solving. Recently I have been trying to
 1. Search Insert Position
 2. First and Last Occurence of a number
 3. Cutting Wood
+
 I was able to get through the problem by managing to write a solution (which was produced after multiple iterations of failed cases). But when I revisited some of these problems, and the ideas were not as clear in mind, I came to a realization that I don't really understand them as well as thought. 
 
 --- 
