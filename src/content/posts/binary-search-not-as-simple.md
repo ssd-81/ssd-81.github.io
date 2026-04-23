@@ -1,6 +1,6 @@
 ---
 title: "Binary Search as a seed to thinking deeply about problems"
-date: 2026-04-03
+date: 2026-04-24
 description: "a seemingly simple idea to go deeper into problem solving"
 label: "technical"
 ---
