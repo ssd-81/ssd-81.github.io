@@ -2,6 +2,7 @@
 title: "the meta process"
 date: 2025-08-26
 description: "Reflections on learning algorithms and building systems"
+label: "technical"
 ---
 
 I am currently learning algorithms, and most of the time I feel if I really know anything, I write solutions by copying , taking hints, writing brute force solutions and just managing at times. This made me question whether what I am doing is right; and the problem starts there. 

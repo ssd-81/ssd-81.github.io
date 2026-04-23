@@ -6,22 +6,83 @@ const allPosts: CollectionEntry<'posts'>[] = await getCollection('posts');
 const sortedPosts = allPosts
   .filter((post: CollectionEntry<'posts'>) => !post.data.draft)
   .sort((a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const technicalPosts = sortedPosts.filter(p => p.data.label === 'technical');
+const generalPosts = sortedPosts.filter(p => p.data.label === 'general');
 ---
 
+<script>
+  function showCategory(category: string) {
+    document.querySelectorAll('.post-list').forEach(el => el.classList.add('hidden'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('bg-gray-200', 'dark:bg-gray-700'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.add('bg-gray-100', 'dark:bg-gray-800'));
+    
+    document.getElementById(category)?.classList.remove('hidden');
+    document.getElementById(`btn-${category}`)?.classList.remove('bg-gray-100', 'dark:bg-gray-800');
+    document.getElementById(`btn-${category}`)?.classList.add('bg-gray-200', 'dark:bg-gray-700');
+  }
+</script>
+
 <BaseLayout title="Writing | parallex">
-  <h1 class="mb-12">Writing</h1>
-  <ul class="space-y-4">
-    {sortedPosts.map((post: CollectionEntry<'posts'>) => (
-      <li>
-        <a href={`/posts/${post.slug}`} class="block no-underline group">
-          <div class="flex items-baseline justify-between gap-4">
-            <span class="font-medium group-hover:underline underline-offset-2">{post.data.title}</span>
-            <time datetime={post.data.date.toISOString()} class="text-sm text-muted-light dark:text-muted-dark font-sans whitespace-nowrap">
-              {post.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-            </time>
-          </div>
-        </a>
-      </li>
-    ))}
-  </ul>
+  <h1 class="mb-8">Writing</h1>
+  
+  <div class="flex gap-3 mb-10">
+    <button id="btn-all" onclick="showCategory('all')" class="tab-btn px-4 py-2 rounded bg-gray-200 dark:bg-gray-700 transition-colors">All</button>
+    <button id="btn-technical" onclick="showCategory('technical')" class="tab-btn px-4 py-2 rounded bg-gray-100 dark:bg-gray-800 transition-colors">Technical</button>
+    <button id="btn-general" onclick="showCategory('general')" class="tab-btn px-4 py-2 rounded bg-gray-100 dark:bg-gray-800 transition-colors">General</button>
+  </div>
+
+  <div id="all" class="post-list">
+    <p class="text-sm text-muted-light dark:text-muted-dark mb-4">{sortedPosts.length} posts</p>
+    <ul class="space-y-4">
+      {sortedPosts.map((post: CollectionEntry<'posts'>) => (
+        <li>
+          <a href={`/posts/${post.slug}`} class="block no-underline group">
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="font-medium group-hover:underline underline-offset-2">{post.data.title}</span>
+              <time datetime={post.data.date.toISOString()} class="text-sm text-muted-light dark:text-muted-dark font-sans whitespace-nowrap">
+                {post.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+              </time>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div id="technical" class="post-list hidden">
+    <p class="text-sm text-muted-light dark:text-muted-dark mb-4">{technicalPosts.length} technical posts</p>
+    <ul class="space-y-4">
+      {technicalPosts.map((post: CollectionEntry<'posts'>) => (
+        <li>
+          <a href={`/posts/${post.slug}`} class="block no-underline group">
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="font-medium group-hover:underline underline-offset-2">{post.data.title}</span>
+              <time datetime={post.data.date.toISOString()} class="text-sm text-muted-light dark:text-muted-dark font-sans whitespace-nowrap">
+                {post.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+              </time>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div id="general" class="post-list hidden">
+    <p class="text-sm text-muted-light dark:text-muted-dark mb-4">{generalPosts.length} general posts</p>
+    <ul class="space-y-4">
+      {generalPosts.map((post: CollectionEntry<'posts'>) => (
+        <li>
+          <a href={`/posts/${post.slug}`} class="block no-underline group">
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="font-medium group-hover:underline underline-offset-2">{post.data.title}</span>
+              <time datetime={post.data.date.toISOString()} class="text-sm text-muted-light dark:text-muted-dark font-sans whitespace-nowrap">
+                {post.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+              </time>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
 </BaseLayout>
