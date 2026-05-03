@@ -7,7 +7,7 @@ const posts = defineCollection({
     date: z.date(),
     description: z.string().optional(),
     draft: z.boolean().default(false),
-    label: z.enum(['technical', 'general']).default('general'),
+    label: z.enum(['technical', 'general', 'cero']).default('general'),
   }),
 });
 
