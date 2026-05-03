@@ -4,7 +4,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 
 const allPosts: CollectionEntry<'posts'>[] = await getCollection('posts');
 const sortedPosts = allPosts
-  .filter((post: CollectionEntry<'posts'>) => !post.data.draft)
+  .filter((post: CollectionEntry<'posts'>) => !post.data.draft && post.data.label !== 'cero')
   .sort((a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const latestPosts = sortedPosts.slice(0, 10);
