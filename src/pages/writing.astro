@@ -9,6 +9,7 @@ const sortedPosts = allPosts
 
 const technicalPosts = sortedPosts.filter(p => p.data.label === 'technical');
 const generalPosts = sortedPosts.filter(p => p.data.label === 'general');
+const visiblePosts = sortedPosts.filter(p => p.data.label !== 'cero');
 ---
 
 <script is:inline>
@@ -33,9 +34,9 @@ const generalPosts = sortedPosts.filter(p => p.data.label === 'general');
   </div>
 
   <div id="all" class="post-list">
-    <p class="text-sm text-muted-light dark:text-muted-dark mb-4">{sortedPosts.length} posts</p>
+    <p class="text-sm text-muted-light dark:text-muted-dark mb-4">{visiblePosts.length} posts</p>
     <ul class="space-y-4">
-      {sortedPosts.map((post: CollectionEntry<'posts'>) => (
+      {visiblePosts.map((post: CollectionEntry<'posts'>) => (
         <li>
           <a href={`/posts/${post.slug}`} class="block no-underline group">
             <div class="flex items-baseline justify-between gap-4">
